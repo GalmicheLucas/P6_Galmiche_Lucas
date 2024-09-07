@@ -48,7 +48,10 @@ getCategories();
 
 function setFilter(data) {
     const div = document.createElement("div")
+    div.addEventListener("click", () => alert("ohoh"));
+ 
 div.innerHTML = `${data.name}`;
  
 document.querySelector(".div-container").append(div);
 }
+document.querySelector(".tous").addEventListener('click', () => getWorks())
