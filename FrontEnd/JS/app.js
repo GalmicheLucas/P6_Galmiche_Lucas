@@ -1,4 +1,5 @@
-async function getWorks() {
+async function getWorks(filter) {
+    document.querySelector(".gallery").innerHTML = "";
     const url = "http://localhost:5678/api/works";
     try{
         const response = await fetch(url);
@@ -7,12 +8,17 @@ async function getWorks() {
         }
 
         const json = await response.json();
-        console.log(json);
-        // setFigure(json);
-        for(let i = 0; i < json.length; i++) {
-            setFigure(json[i]); 
+        if(filter) {
+            const filtered = json.filter((data) => data.categoryId === filter);
+            for(let i = 0; i < filtered.length; i++) {
+                setFigure(filtered[i]); 
+            }
+        } else {
+            for(let i = 0; i < json.length; i++) {
+                setFigure(json[i]); 
+            }
         }
-    } catch (error) {
+       } catch (error) {
         console.error(error.message);
     }
 }
@@ -35,7 +41,6 @@ async function getCategories() {
         }
 
         const json = await response.json();
-        console.log(json);
         for(let i = 0; i < json.length; i++) {
             setFilter(json[i]); 
         }
@@ -45,13 +50,13 @@ async function getCategories() {
 }
 getCategories();
 
-
 function setFilter(data) {
     const div = document.createElement("div")
-    div.addEventListener("click", () => alert("ohoh"));
- 
+    div.className = data.id;
+    div.addEventListener('click', () => getWorks(data.id));
+    //ai-je d'autre choix pour mettre id comme nom de classe
 div.innerHTML = `${data.name}`;
- 
+
 document.querySelector(".div-container").append(div);
 }
-document.querySelector(".tous").addEventListener('click', () => getWorks())
+document.querySelector(".tous").addEventListener('click', () => getWorks());
