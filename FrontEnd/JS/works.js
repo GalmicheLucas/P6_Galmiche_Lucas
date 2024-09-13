@@ -1,44 +1,13 @@
-async function generateModal () {
+// Sélectionne l'élément avec la classe 'gallery' du DOM 
+const gallery = document.querySelector(".gallery");
 
-const sectionPortfolio = document.getElementById("portfolio");
-sectionPortfolio.insertAdjacentElement("afterbegin", mode);
+// Définit une fonction asynchrone pour charger les projets depuis l'API
+async function loadProjects() {
+    // Effectue une requête GET vers l'API pour récupérer les travaux
+    const response = await fetch("http://localhost:5678/api/works");
+    
+    // Attend la réponse de l'API et la convertit en JSON
+    return await response.json();
+}   
 
-const modifyButton = document.querySelector(".modify");
-modifyButton.addEventListener("click", async() => {
-    const apiWorks = await fetch("http://localhost:5678/api/works");
-    const works = await apiWorks.json();
 
-    generateModal(works);
-});
-}
-
-// Not display filterBar
-const filterBar = document.querySelector(".filterbar");
-filterBar.style.display = "none";
-
-// gallery
-const galleryProjects = document.createElement('div');
-galleryProjects.className = "gallery";
-
-//Display gallery of projects in DOM
-export function displayGallery(works) {
-
-    galleryProjects.innerHTML = '';
-
-    if (Array.isArray(works) && works.length > 0) {
-        for (let i = 0; i < works.length; i++) {
-            const figure = document.createElement("figure");
-            const img = document.createElement("img");
-            const figCaption = document.createElement("figcaption");
-            img.src = works[i].imageUrl;
-            figCaption.textContent = works[i].title;
-            //update with modale activity
-            figure.id = `works-${works[i].id}`;
-            //appendChild to portfolioSection
-            figure.appendChild(img);
-            figure.appendChild(figCaption);
-            galleryProjects.appendChild(figure);
-            portfolioSection.appendChild(galleryProjects);
-        }
-    }
-}

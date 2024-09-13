@@ -1,18 +1,23 @@
-import { generateIntroduction } from "./intro.js";
+import {generateIntroduction} from "./intro.js";
 //appel de la fonction
 generateIntroduction();
 
-import { generateModal } from "./works.js";
-generateModal();
+//import { generateModal } from "./works.js";
+//apel de la fonction
+//generateModal();
 
-import { getWorks } from "./works.js";
-getWorks();
+import {getCategories} from "./app.js";
+getCategories();
+ 
+// test 
+ import { getWorks } from "./works.js";
+// //appel de la fonction
+ getWorks();
 
-// import { getCategories } from "./works.js";
-// getCategories();
+import { generateContactForm } from "./works.js";
+generateContactForm();
 
-// import { setFigure } from "./works.js";
-// setFigure();
 
-import {displayGallery} from "./works.js";
-displayGallery(works);
+
+
+

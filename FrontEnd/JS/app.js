@@ -1,4 +1,4 @@
-async function getWorks(filter) {
+async function getWorks() {
     document.querySelector(".gallery").innerHTML = "";
     const url = "http://localhost:5678/api/works";
     try{
@@ -24,16 +24,10 @@ async function getWorks(filter) {
 }
 getWorks();
 
-function setFigure(data) {
-const figure = document.createElement("figure")
-figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
-				<figcaption>${data.title}</figcaption>`;
- 
-document.querySelector(".gallery").append(figure);
-}
+
 
 async function getCategories() {
-    const url = "http://localhost:5678/api/categories";
+    const url = "http://localhost:5678/api/cnpm starategories";
     try{
         const response = await fetch(url);
         if (!response.ok) {
@@ -50,6 +44,13 @@ async function getCategories() {
 }
 getCategories();
 
+function setFigure(data) {
+const figure = document.createElement("figure")
+figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
+				<figcaption>${data.title}</figcaption>`;
+ 
+document.querySelector(".gallery").append(figure);
+}
 function setFilter(data) {
     const div = document.createElement("div")
     div.className = data.id;
