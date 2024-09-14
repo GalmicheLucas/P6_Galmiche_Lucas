@@ -1,4 +1,5 @@
-export function generateContactForm() {
+const main = document.querySelector("main");
+function generateContactForm() {
 
     const contactSection = document.createElement("section");
     contactSection.id = 'contact';
@@ -29,4 +30,4 @@ export function generateContactForm() {
     main.appendChild(contactSection);
 
 }
-generateContacForm();
+generateContactForm();

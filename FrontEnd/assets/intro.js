@@ -2,7 +2,7 @@
 const main = document.querySelector("main");
 
 // Create introduction section
-export function generateIntroduction() {
+   function generateIntroduction() {
   // Create intro elements
   const introSection = document.createElement("section");
   introSection.id = "introduction";
@@ -24,3 +24,5 @@ export function generateIntroduction() {
   introSection.appendChild(article);
   main.appendChild(introSection);
 }
+
+generateIntroduction();
